@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interviews</title>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/static/app/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="/static/app/app.css" rel="stylesheet">
+    <link href="/static/app/interview.css" rel="stylesheet">
+    <link href="/static/app/pygments.css" rel="stylesheet">
+    <link href="/static/labelauty/source/jquery-labelauty.css" rel="stylesheet">
+    <link href="/static/bootstrap-slider/dist/css/bootstrap-slider.css" rel="stylesheet">
+    <link href="/static/bootstrap-slider/dist/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#698aa7">
+    <meta name="theme-color" content="#83b3dd">
+  </head>
+  <body class="dabody">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <a class="navbar-brand">docassemble</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/user/sign-in?next=%2Flist">Sign in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-8 col-lg-8">
+<h1 class="dastartpage">Available interviews</h1>
+<ul class="dastartpage">
+  
+  <li><a href="/?i=docassemble.base%3Adata%2Fquestions%2Fexamples%2Fchat.yml">Live chat</a></li>
+  
+  <li><a href="/?i=docassemble.base%3Adata%2Fquestions%2Fexamples%2Fchoices-icons.yml">Choices with icons</a></li>
+  
+  <li><a href="/?i=docassemble.demo%3Adata%2Fquestions%2Fquestions.yml">Demonstration interview</a></li>
+  
+  <li><a href="/?i=docassemble.base%3Adata%2Fquestions%2Fexamples%2Fchoices-icons2.yml" class="dainterviewhaserror">docassemble.base:data/questions/examples/choices-icons2.yml</a></li>
+  
+</ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/static/app/jquery.min.js"></script>
+    <script src="/static/app/jquery.validate.min.js"></script>
+    <script src="/static/app/moment.min.js"></script>
+    <script src="/static/app/signature.js"></script>
+    <script src="/static/app/socket.io.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/app/jasny-bootstrap.min.js"></script>
+    <script>
+      var whichButton = null;
+      $( document ).ready(function(){
+        $(".form").find('input[type=text],textarea,select').filter(':visible:first').focus();
+        setTimeout(function () {
+          window.scrollTo(0, 1);
+        }, 10);
+        setTimeout(function(){
+          $("#flash .alert-success").hide(300, function(){
+            $(self).remove();
+          });
+        }, 3000);
+        $(".btn-lg").click(function(){
+          whichButton = this;
+        });
+        $(".form").on('submit', function(){
+          $(".btn-lg").each(function(){
+            var the_button = this;
+            setTimeout(function(){
+              $(the_button).prop("disabled", true);
+            }, 1);
+            if (this != whichButton){
+              $(this).removeClass("btn-primary btn-info btn-warning btn-error btn-success");
+              $(this).addClass("btn-default");
+            }
+            else{
+              $(whichButton).removeClass("btn-primary btn-info btn-warning btn-error btn-default");
+              $(whichButton).addClass("btn-success");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
