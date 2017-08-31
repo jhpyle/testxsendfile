@@ -52,7 +52,7 @@ setup(name='testxsendfile',
       license='The MIT License (MIT)',
       url='https://github.com/jhpyle/testxsendfile',
       packages=find_packages(),
-      dependency_links=[],
+      install_requires = ['flask'],
       package_data=find_package_data(where='testxsendfile', package='testxsendfile'),
       zip_safe=False,
      )
